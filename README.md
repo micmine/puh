@@ -5,7 +5,7 @@ plantuml helper
 ```
 git clone https://github.com/micmine/puh
 cd puh/
-sudo ln -s puh.sh /usr/local/bin/puh
+sudo ln -s (pathtofolder)/puh.sh /usr/local/bin/puh
 ```
 
 ## install dependencies debian
