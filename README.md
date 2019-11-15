@@ -10,7 +10,7 @@ sudo ln -s (pathtofolder)/puh.sh /usr/local/bin/puh
 
 ## install dependencies debian
 ```
-sudo apt install git bash entr feh
+sudo apt install git bash entr feh graphviz
 ```
 
 ## dependencies
