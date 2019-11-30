@@ -11,7 +11,7 @@ fi
 script=$0 #$(dirname "$0")/$(basename "$0")
 
 render () {
-    java -jar "$plantumllocation" "$1"
+    java -jar "$plantumllocation" "$1" > /dev/null 2>/dev/null &
 }
 
 startLive () {
