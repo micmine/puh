@@ -4,14 +4,10 @@ scriptname="${0%.*}"
 scriptname="${scriptname##*/}"
 pitlocation="/tmp/.$scriptname-"
 
-plantumllocation="$HOME/tools/plantuml/plantuml.jar"
-if [ -n "$PLANTUML_HOME" ];then
-	plantumllocation="$PLANTUML_HOME/plantuml.jar"
-fi
-script=$0 #$(dirname "$0")/$(basename "$0")
+script=$0
 
 render () {
-	java -jar "$plantumllocation" "$1" &
+	plantuml "$1" &
 }
 
 startLive () {
@@ -20,7 +16,7 @@ startLive () {
 	image="${1%.*}.png"
 	find "$1" | entr -r "$script" -r "$1" &
 	echo -n "$! " >> "$pitlocation$name"
-	feh -Z -R 1 "$image" &
+	feh -Z -R 1 "$image" >> /dev/null 2> /dev/null &
 	echo -n "$! " >> "$pitlocation$name"
 }
 
@@ -51,10 +47,6 @@ helpinfo () {
 	echo "2 => file not found"
 }
 
-if [ ! -f "$plantumllocation" ]; then
-	echo "Could not found $plantumllocation!"
-	exit 1
-fi
 if [ ! -z "$1" ] && [ ! -z "$2" ]; then
 	if [ ! -f "$2" ]; then
 		echo "File does not exist: $2"
